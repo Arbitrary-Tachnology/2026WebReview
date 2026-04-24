@@ -151,3 +151,125 @@ Content Semantic Elements:
 <mark> -highlighted text
 <details> / <summary> - expand and collapse more details
 <div> - non-semantic container
+
+## CSS
+
+CSS - Cascading Style Sheets
+
+Link connects the CSS to HTML
+
+# targets things with the following word as their id
+
+color sets the text color in CSS
+
+Margin, border, padding, content are the four layers of the CSS box model
+
+CSS controls the visual presentation of HTML
+
+Inline CSS -> Avoid - hard to maintain 
+    <p style="color:red">Text</p>
+Internal CSS -> Ok for quick tests 
+    <style> 
+        p { color:red; } 
+    </style>
+External CSS -> Best practice - always use 
+    <link rel="stylesheet" href="styles.css">
+
+Variables - lets you stor values once and reuse them everywhere
+    :root {
+    --color-navy:  #003366;
+    --color-gold:  #F5A800;
+    --color-white: #FFFFFF;
+    --font-main:   'Segoe UI', Arial, sans-serif;
+    --spacing-md:  1.5rem;
+    }
+
+    /* Using variables */
+    nav {
+    background-color: var(--color-navy);
+    font-family: var(--font-main);
+    padding: var(--spacing-md);
+    }
+Why use
+ Change a color in ONE place, updates everywhere
+ SLLBOCES brand colors stay consistent
+ Easy to read: var(--color-navy) vs #003366
+ Professional industry practice
+ Your starter file already has the variables — just fill them in!
+
+CSS Selectors - tell which CSS elements to style 
+
+CSS Box Model - controls spacing inside and around each element
+    .card {
+    /* Content */
+    width:   300px;
+    height:  auto;
+
+    /* Padding (inside) */
+    padding: 1rem;
+
+    /* Border */
+    border:  2px solid
+            #F5A800;
+
+    /* Margin (outside) */
+    margin:  1.5rem;
+
+    /* Modern fix */
+    box-sizing: border-box;
+    }
+
+Typography - control how text looks
+
+Colors - offers multiple ways to specify color and several background properties for rich value
+
+Flexbox - arranging items rows or columns easy
+    nav {
+        display: flex;          /* Activate Flexbox */
+
+        /* Main axis alignment */
+        justify-content: space-between;
+        /* Options: flex-start | flex-end
+            center | space-between
+            space-around | space-evenly */
+
+        /* Cross axis alignment */
+        align-items: center;
+        /* Options: flex-start | flex-end
+            center | stretch | baseline */
+
+        flex-wrap: wrap;        /* Allow wrapping */
+        gap: 1rem;              /* Space between items */
+    }
+
+Hero Image section - creates a bold full-width banner with background image and overlay for text contrast
+    /* --- HERO SECTION --- */
+    #hero {
+    background-image: url('images/stlawrence.jpg');
+    background-size:     cover;
+    background-position: center center;
+    background-repeat:   no-repeat;
+    min-height:          450px;
+    display:             flex;
+    align-items:         center;
+    justify-content:     center;
+    position:            relative;
+    }
+
+    /* Dark overlay so white text is readable */
+    #hero::before {
+    content:    '';
+    position:   absolute;
+    inset:      0;          /* top/right/bottom/left: 0 */
+    background: rgba(0, 51, 102, 0.6);
+    z-index:    1;
+    }
+
+    /* Text above the overlay */
+    .hero-content {
+    position: relative;
+    z-index:  2;
+    color:    #FFFFFF;
+    text-align: center;
+    }
+
