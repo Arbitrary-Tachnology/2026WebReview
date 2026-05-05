@@ -1,0 +1,350 @@
+/* ===============================================
+       CSS RESET & BASE STYLES
+=============================================== */
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+/* -----------------------------------------------
+    TODO #2: SLLBOCES Color Scheme
+    Replace the placeholder values below with the
+    actual SLLBOCES colors:
+        Primary Blue:  #00539a
+        Primary Green: #008762
+        Light Gold:    #FFD66B
+        White:         #FFFFFF
+        Dark text:     #1A2B45
+        Light Blue:    #93a4cf
+        Light Green:   #92c3b2
+----------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+:root {
+    /* SLLBOCES Brand Colors */
+    --color-blue: #00539a;
+    --color-green: #008762;
+    --color-gold: #FFD66b;
+    --color-white: #FFFFFF;
+    --color-dark: #1A2B45;
+    --color-ltblue: #93a4cf;
+    --color-ltgreen: #92c3b2;
+
+    /* Topography */
+    --font-main: 'EB Garamond', Garamond, serif;
+    --font-bold: 'Oswald', Arial, sans-serif; 
+    --font-regular: 'Quicksand', Arial, sans-serif;
+    
+    /* Spacing Scale */
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+
+    /* Borders */
+    --radius: 8px;
+    --border-gold: 2px solid var(--color-gold);
+
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-dark);
+    line-height: 1.6;
+}
+
+/* ===============================================
+    NAVIGATION — Flexbox Required!
+    =============================================== */
+header {
+     background-color: var(--color-blue);
+     position: sticky;
+     top: 0;
+     left: 0;
+     z-index: 100;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* TODO #3: Complete the Flexbox navigation styles.
+    The .main-nav should:
+    - Use display: flex
+    - Place the logo on the LEFT and links on the RIGHT
+    - Vertically center all items
+    - Add padding of 1rem 2rem
+    Hint: use justify-content and align-items            */
+.main-nav {
+     display: flex;  /* Flexbox activated */
+     justify-content: space-between; /* logo left nav right */
+     align-items: center; /* vertically centered */
+     padding: 1rem 2rem;
+     max-width: 1200px;
+     margin: 0 auto;
+     font-family: var(--font-bold);
+}
+
+.nav-logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--color-gold);
+    text-decoration: none; 
+}
+
+.nav-links {
+     list-style: none;
+     display: flex;
+     gap: 2rem;
+}
+
+.nav-links a {
+     color: var(--color-white);
+     text-decoration: none;
+     font-size: 1rem;
+     transition: color 0.5s;
+}
+
+.nav-links a:hover {
+     color: var(--color-gold);
+}
+
+/* ===============================================
+    HERO IMAGE SECTION
+    =============================================== */
+/* TODO #4: Complete the hero image CSS.
+    - Set background-image to your hero image file
+        (place the image in an /images/ folder first)
+    - background-size should COVER the entire section
+    - background-position should CENTER the image
+    - Set a min-height of 100vh (full screen height)
+    - Add display:flex, align-items:center, justify-content:center */
+#hero {
+     background-image: url(../images/wPdamSunset.jpg);
+     background-size: cover;
+     background-position: center;
+     min-height: 100vh;
+     font-family: var(--font-bold);
+}
+
+/* Dark overlay on the hero image for text readability */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 51, 102, 0.65)
+}
+
+.hero-content {
+     position: relative;
+     text-align: center;
+     color: var(--color-white);
+     z-index: 1;
+     padding: 15rem;
+}
+
+.hero-content h1 {
+     font-size: 3.5rem;
+     margin-bottom: 0.5rem;
+     text-shadow: 2px 2px 6px rgba(0,0,0,0.5)
+}
+
+.hero-content p {
+     font-size: 1.4rem;
+     color: var(--color-gold);
+     margin-bottom: 1.5rem;
+}
+
+.btn {
+     display: inline-block;
+     background-color: var(--color-gold);
+     color: var(--color-blue);
+     padding: 0.8rem 2rem;
+     border-radius: 4px;
+     text-decoration: none;
+     font-weight: bold;
+     font-size: 1.1rem;
+     transition: background-color 0.5s;
+}
+
+.btn:hover {
+     background-color: var(--color-ltgreen)
+}
+
+/* ===============================================
+    MAIN CONTENT SECTIONS
+    =============================================== */
+main {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 2rem;
+     font-family: var(--font-regular);
+}
+
+main p{
+     margin-bottom: 1rem;
+}
+
+main #about p {
+     max-width: 800px;
+}
+
+/*main #about p:first-child {
+     font-weight: bold;
+}*/
+
+section {
+     padding: 4rem 0;
+     border-bottom: 2px solid var(--color-ltblue);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+.section-title {
+     font-size: 2rem;
+     color: var(--color-dark);
+     margin-bottom: 0.5rem;
+     padding-bottom: 0.5rem;
+     border-left: 5px solid var(--color-green);
+     padding-left: 1rem;
+}
+
+.section-subtitle {
+     color: var(--color-ltblue);
+     margin-bottom: 2rem;
+     font-style: italic;
+}
+
+/* ===============================================
+    COURSES GRID — What I Learned
+    =============================================== */
+.courses-grid {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 1.5rem;
+     margin-top: 1.5rem;
+}
+
+.course-card {
+     flex: 1 1 220px;
+     background: var(--color-white);
+     border: 2px solid var(--color-ltblue);
+     border-top: 5px solid var(--color-green);
+     border-radius: 6px;
+     padding: 1.5rem;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.3)
+}
+
+.course-card h3 {
+     color: var(--color-dark);
+     margin-bottom: 0.75rem;
+}
+
+.course-card ul {
+     padding-left: 1.2rem;
+}
+
+.course-card li {
+     margin-bottom: 0.4rem;
+     font-size: 0.95rem;
+}
+
+/* ===============================================
+    PROJECTS SECTION
+    =============================================== */
+.projects-grid {
+     /* TODO */ ;
+}
+
+.project-card {
+     /* TODO */ ;
+}
+
+.project-card-header {
+     /* TODO */ ;
+}
+
+.project-card-header h3 {
+     /* TODO */ ;
+}
+
+.project-card-body {
+     /* TODO */ ;
+}
+
+.project-card-body p {
+     /* TODO */ ;
+}
+
+.project-link {
+     /* TODO */ ;
+}
+
+.project-link:hover {
+     /* TODO */ ;
+}
+
+/* ===============================================
+    SKILLS TABLE
+    =============================================== */
+.skills-table {
+     /* TODO */ ;
+}
+
+.skills-table th {
+     /* TODO */ ;
+}
+
+.skills-table td {
+     /* TODO */ ;
+}
+
+.skills-table tr:nth-child(even) {
+     /* TODO */ ;
+}
+
+.skills-table tr:hover {
+     /* TODO */ ;
+}
+
+/* ===============================================
+    FOOTER — Flexbox Required!
+    =============================================== */
+footer {
+     /* TODO */ ;
+}
+
+/* TODO #5: Complete the footer Flexbox layout.
+    The .footer-container should:
+    - Use display: flex
+    - Wrap items when the screen is narrow (flex-wrap)
+    - Space the columns evenly across the footer
+    - Add a gap between columns               */
+.footer-container {
+     /* TODO */ ;
+}
+
+.footer-col h4 {
+     /* TODO */ ;
+}
+
+.footer-nav-links {
+     /* TODO */ ;
+}
+
+.footer-nav-links li {
+     /* TODO */ ;
+}
+
+.footer-nav-links a {
+     /* TODO */ ;
+}
+
+.footer-nav-links a:hover {
+     /* TODO */ ;
+}
+
+.footer-bottom {
+     /* TODO */ ;
+}
